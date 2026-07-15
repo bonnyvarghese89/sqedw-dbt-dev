@@ -1,0 +1,11 @@
+CHANGE_DATE,COUNTRY_FULL_NAME,COUNTRY_ISO_NUMBER,COUNTRY_ISO2_CODE,COUNTRY_ISO3_CODE,COUNTRY_NAME,UN_AREA_CODE,UN_AREA_NAME,UN_REGION_CODE,UN_REGION_NAME
+2026-01-01,India,356,IN,IND,India,142,Asia,34,Southern Asia
+2026-01-01,United States,840,US,USA,United States,19,Americas,21,Northern America
+2026-01-01,Germany,276,DE,DEU,Germany,150,Europe,155,Western Europe
+2026-01-01,Sweden,752,SE,SWE,Sweden,150,Europe,154,Northern Europe
+2026-01-01,Brazil,76,BR,BRA,Brazil,19,Americas,5,South America
+2026-01-01,Japan,392,JP,JPN,Japan,142,Asia,30,Eastern Asia
+2026-01-01,China,156,CN,CHN,China,142,Asia,30,Eastern Asia
+2026-01-01,United Kingdom,826,GB,GBR,United Kingdom,150,Europe,154,Northern Europe
+2026-01-01,Australia,36,AU,AUS,Australia,9,Oceania,53,Australia and New Zealand
+2026-01-01,Canada,124,CA,CAN,Canada,19,Americas,21,Northern America

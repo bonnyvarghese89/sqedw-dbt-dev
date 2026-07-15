@@ -1,0 +1,63 @@
+version: 2
+
+models:
+
+  # =========================
+  # CHANGE CASE TABLE
+  # =========================
+  - name: stg_moc__change_case_table
+    description: "MOC change case master data."
+    columns:
+
+      - name: change_case_row_id
+        tests:
+          - not_null
+          - unique
+
+      - name: change_case_id
+        tests:
+          - not_null
+
+      - name: status
+        tests:
+          - not_null
+
+
+  # =========================
+  # CHANGE CASE HISTORY
+  # =========================
+  - name: stg_moc__change_case_history
+    description: "MOC change case history / audit trail."
+    columns:
+
+      - name: change_case_row_id
+        tests:
+          - not_null
+
+      - name: version_number
+        tests:
+          - not_null
+
+      - name: updated_timestamp
+        tests:
+          - not_null
+
+
+  # =========================
+  # WB TOOL ACCESS
+  # =========================
+  - name: stg_moc__wb_tool_access
+    description: "MOC write-back tool access control table."
+    columns:
+
+      - name: sheet_id
+        tests:
+          - not_null
+
+      - name: user_email
+        tests:
+          - not_null
+
+      - name: has_access
+        tests:
+          - not_null

@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+
+  - name: moc
+    database: PRD_APP_ECM_IMPACT_ANALYSIS
+    schema: API
+    description: "Management of Change (MOC) source system in PRD_APP_ECM_IMPACT_ANALYSIS"
+
+    quoting:
+      identifier: true
+
+    meta:
+      data_quality: Medium
+      source_system_name: MOC
+      owner_business: Armen.Laziev@skf.com
+      owner_it: Armen.Laziev@skf.com
+
+    tables:
+
+      - name: t_change_case_table
+        identifier: T_CHANGE_CASE_TABLE
+        quote: true
+        description: >
+          Management of Change (MOC) source system containing change case master data.
+
+      - name: t_change_case_table_history
+        identifier: T_CHANGE_CASE_TABLE_HISTORY
+        quote: true
+        description: >
+          Management of Change (MOC) source system containing change case history and audit trail data.
+
+      - name: moc_wb_tool_access
+        identifier: MOC_WB_TOOL_ACCESS
+        quote: true
+        description: >
+          Management of Change (MOC) source system containing write-back tool access control data.

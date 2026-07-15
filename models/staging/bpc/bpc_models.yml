@@ -1,0 +1,132 @@
+version: 2
+
+models:
+
+  # =========================
+  # SAFETY
+  # =========================
+  - name: stg_bpc__safety
+    description: "BPC Safety incident data at event level."
+    columns:
+      - name: safety_key
+        description: "Surrogate key for safety incidents."
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+    tests:
+      - duplicate_threshold:
+          column_name: safety_key
+          max_duplicates: 40
+          config:
+            severity: error
+
+  # =========================
+  # ENVIRONMENT
+  # =========================
+  - name: stg_bpc__environment
+    description: "BPC environmental metrics."
+    columns:
+      - name: environment_key
+        description: "Surrogate key for environment records."
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+    tests:
+      - duplicate_threshold:
+          column_name: environment_key
+          max_duplicates: 40
+          config:
+            severity: error
+
+  # =========================
+  # ENERGY
+  # =========================
+  - name: stg_bpc__energy
+    description: "BPC energy consumption data."
+    columns:
+      - name: energy_key
+        description: "Surrogate key for energy records."
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+    tests:
+      - duplicate_threshold:
+          column_name: energy_key
+          max_duplicates: 40
+          config:
+            severity: error
+
+  # =========================
+  # EMPLOYEE
+  # =========================
+  - name: stg_bpc__employee
+    description: "Employee data by entity and period."
+    columns:
+      - name: employee_key
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  # =========================
+  # SITE
+  # =========================
+  - name: stg_bpc__site
+    description: "BPC site master data."
+    columns:
+      - name: site_key
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  # =========================
+  # ENTITY
+  # =========================
+  - name: stg_bpc__entity
+    description: "BPC entity master data."
+    columns:
+      - name: entity_key
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+  # =========================
+  # EHS ACCOUNT
+  # =========================
+  - name: stg_bpc__ehs_account
+    description: "BPC EHS account reference data."
+    columns:
+      - name: account_ehs_key
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error

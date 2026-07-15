@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: accuweather
+    database: SRC_0088
+    schema: API
+    description: >
+      Weather data provided by AccuWeather through the Snowflake Marketplace.
+      This source is used to enrich sustainability analytics with weather
+      conditions across manufacturing locations.
+
+    tags: ["ACCUWEATHER"]
+
+    meta:
+      data_quality: High
+      source_system_name: AccuWeather
+      owner_business: sustainability.team@coljam.com
+      owner_it: dataengineering@coljam.com
+
+    tables:
+      - name: hourly_weather_metrics
+        identifier: SKF_HOURLY_METRIC_V2_0
+        description: >
+        
+          Hourly weather metrics including temperature, humidity,
+          precipitation, snow, wind, pressure, and visibility for
+          manufacturing locations worldwide.

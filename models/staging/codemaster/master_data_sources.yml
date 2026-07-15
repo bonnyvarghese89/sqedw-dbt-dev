@@ -1,0 +1,173 @@
+version: 2
+
+sources:
+
+  - name: codemaster
+    database: SRC_0084
+    schema: API
+    description: "Enterprise master and reference data including calendar, geography, legal structure, and site metadata."
+
+    meta:
+      data_quality: High
+      source_system_name: MASTER_DATA_PLATFORM
+      owner_business: masterdata.team@company.com
+      owner_it: data.platform@company.com
+
+    tables:
+
+      # =========================
+      # CALENDAR
+      # =========================
+      - name: calendar
+        identifier: CALENDAR
+        quote: true
+        description: "Enterprise calendar dimension for reporting and analytics."
+
+        columns:
+          - name: DATE_KEY
+          - name: DATE
+          - name: YEAR
+          - name: MONTH
+          - name: QUARTER
+          - name: DAY_OF_MONTH
+
+        loaded_at_field: PACKAGING_DATE
+        freshness:
+          warn_after: {count: 7, period: day}
+          error_after: {count: 14, period: day}
+
+      # =========================
+      # FACTORY CODE LIST
+      # =========================
+      - name: factory_code_list
+        identifier: FACTORY_CODE_LIST
+        quote: true
+        description: "Factory and site classification reference data."
+
+        columns:
+          - name: SITE_CODE
+          - name: COUNTRY_NAME
+          - name: IS_FACTORY
+          - name: ACTIVE
+
+        loaded_at_field: CHANGE_DATE
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 60, period: day}
+
+      # =========================
+      # ISO COUNTRY CODES
+      # =========================
+      - name: iso_country_codes
+        identifier: ISO_COUNTRY_CODES
+        quote: true
+        description: "ISO country reference and UN region classification data."
+
+        columns:
+          - name: COUNTRY_ISO2_CODE
+          - name: COUNTRY_ISO3_CODE
+          - name: COUNTRY_NAME
+
+        loaded_at_field: CHANGE_DATE
+        freshness:
+          warn_after: {count: 365, period: day}
+          error_after: {count: 730, period: day}
+
+      # =========================
+      # LEGAL TREE
+      # =========================
+      - name: legal_tree
+        identifier: LEGAL_TREE
+        quote: true
+        description: "Legal entity hierarchy and organizational structure."
+
+        columns:
+          - name: LEGAL_UNIT_CODE
+          - name: LEGAL_PARENT_CODE
+          - name: COUNTRY_NAME
+          - name: STATUS
+          - name: IS_ACTIVE
+
+        loaded_at_field: CHANGE_DATE
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 60, period: day}
+
+      # =========================
+      # LOCATION SITE
+      # =========================
+      - name: location_site
+        identifier: LOCATION_SITE
+        quote: true
+        description: "Geographical and operational site location master data."
+
+        columns:
+          - name: LOCATION_SITE_ID
+          - name: LEGAL_UNIT_CODE
+          - name: COUNTRY_NAME
+          - name: LATITUDE
+          - name: LONGITUDE
+
+        loaded_at_field: CHANGE_DATE
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 60, period: day}
+
+      # =========================
+      # MASTER DATA TARGETS
+      # =========================
+      - name: master_data_targets
+        identifier: MASTER_DATA_TARGETS
+        quote: true
+        description: "Decarbonization targets and sustainability planning data."
+
+        columns:
+          - name: COUNTRY
+          - name: SITE_CODE
+          - name: DECARB_SCOPE
+          - name: DECARB_SITE_TARGET_T_CO2E
+          - name: DECARBONIZED_SITES_TARGET_YEAR
+
+        loaded_at_field: _LOADED_AT
+        freshness:
+          warn_after: {count: 7, period: day}
+          error_after: {count: 14, period: day}
+
+      # =========================
+      # SITE DATA
+      # =========================
+      - name: site_data
+        identifier: SITE_DATA
+        quote: true
+        description: "Operational site metrics and measured values."
+
+        columns:
+          - name: SITE
+          - name: YEAR
+          - name: ASPECT
+          - name: VALUE
+
+        loaded_at_field: _LOADED_AT
+        freshness:
+          warn_after: {count: 7, period: day}
+          error_after: {count: 14, period: day}
+
+      # =========================
+      # SITE ROLLUP
+      # =========================
+      - name: site_rollup
+        identifier: SITE_ROLLUP
+        quote: true
+        description: "Aggregated site hierarchy and business classification data."
+
+        columns:
+          - name: SITE_CODE
+          - name: SITE_NAME
+          - name: COUNTRY_NAME
+          - name: BUSINESS_AREA_LONG_NAME
+          - name: DIVISION_NAME
+
+        loaded_at_field: UPLOADED_AT
+        freshness:
+          warn_after: {count: 7, period: day}
+          error_after: {count: 14, period: day}

@@ -1,0 +1,65 @@
+version: 2
+
+sources:
+
+  - name: chaintraced
+    description: "Source system containing Chaintraced PCF and QVR emissions and traceability data."
+    database: SRC_0076
+    schema: API
+
+    tables:
+
+      # =========================
+      # PCF TABLE
+      # =========================
+      - name: FCT_CHAINTRACED_PCF
+        description: "Product Carbon Footprint (PCF) emissions data at product-supplier-plant level."
+        columns:
+          - name: PRODUCT_ID
+            description: "Unique identifier for product."
+
+          - name: SUPPLIER_ID
+            description: "Unique identifier for supplier."
+
+          - name: PLANT_ID
+            description: "Manufacturing plant identifier."
+
+          - name: REPORTING_PERIOD
+            description: "Reporting period for emissions data."
+
+          - name: PCF_KG_CO2E
+            description: "Carbon footprint in kg CO2 equivalent."
+
+          - name: TOTAL_EMISSIONS
+            description: "Total emissions across all categories."
+
+        loaded_at_field: LOAD_TS
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}
+
+      # =========================
+      # QVR TABLE
+      # =========================
+      - name: FCT_CHAINTRACED_QVR
+        description: "Supplier material traceability and risk validation data."
+        columns:
+          - name: SUPPLIER_ID
+            description: "Unique identifier for supplier."
+
+          - name: MATERIAL_ID
+            description: "Unique identifier for material."
+
+          - name: REPORTING_PERIOD
+            description: "Reporting period for traceability data."
+
+          - name: TRACEABILITY_STATUS
+            description: "Traceability status of material supply chain."
+
+          - name: RISK_LEVEL
+            description: "Risk classification of supplier/material."
+
+        loaded_at_field: LOAD_TS
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+
+  - name: stg_accuweather__hourly_weather_metrics
+    description: >
+      Standardized hourly weather metrics sourced from AccuWeather.
+      This model enriches sustainability reporting by providing weather
+      conditions for manufacturing and operational locations.
+
+    columns:
+
+      - name: location_datetime_key
+        description: >
+          Surrogate key generated using location_code and datetime to uniquely
+          identify each hourly weather observation.
+
+        data_tests:
+          - unique
+          - not_null

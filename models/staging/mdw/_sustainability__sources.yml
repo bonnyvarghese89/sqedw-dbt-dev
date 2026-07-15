@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+
+  - name: sustainability
+    database: MDW_SUSTAINABILITY
+    schema: MDW_DM
+    description: "Sustainability master data domain including product structure, variants, vendors, and warehouse information."
+
+    quoting:
+      identifier: true
+
+    meta:
+      data_quality: Medium
+      source_system_name: SUSTAINABILITY_MDW
+      owner_business: sustainability.team@company.com
+      owner_it: data.platform@company.com
+
+    tables:
+
+      # =========================
+      # PRODUCT VARIANTS
+      # =========================
+      - name: final_variant
+        identifier: FINAL_VARIANT
+        quote: true
+
+      # =========================
+      # PRODUCT STRUCTURE (BOM)
+      # =========================
+      - name: product_structure
+        identifier: PRODUCT_STRUCTURE
+        quote: true
+
+      # =========================
+      # VENDOR MASTER
+      # =========================
+      - name: vendor_details
+        identifier: VENDOR_DETAILS
+        quote: true
+
+      # =========================
+      # WAREHOUSE MASTER
+      # =========================
+      - name: warehouse_master
+        identifier: WAREHOUSE_MASTER
+        quote: true

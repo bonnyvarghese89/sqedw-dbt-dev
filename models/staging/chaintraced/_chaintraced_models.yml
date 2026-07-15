@@ -1,0 +1,67 @@
+version: 2
+
+models:
+
+  # =========================
+  # PCF
+  # =========================
+  - name: stg_chaintraced__pcf
+    description: "Staging model for Product Carbon Footprint (PCF) emissions data."
+    columns:
+      - name: pcf_key
+        description: "Surrogate key for PCF records."
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: product_id
+        description: "Unique product identifier."
+
+      - name: supplier_id
+        description: "Unique supplier identifier."
+
+      - name: plant_id
+        description: "Manufacturing plant identifier."
+
+    tests:
+      - duplicate_threshold:
+          column_name: pcf_key
+          max_duplicates: 40
+          config:
+            severity: error
+
+  # =========================
+  # QVR
+  # =========================
+  - name: stg_chaintraced__qvr
+    description: "Staging model for supplier material traceability and risk data."
+    columns:
+      - name: qvr_key
+        description: "Surrogate key for QVR records."
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: supplier_id
+        description: "Unique supplier identifier."
+
+      - name: material_id
+        description: "Unique material identifier."
+
+      - name: risk_level
+        description: "Risk classification of supplier/material."
+
+    tests:
+      - duplicate_threshold:
+          column_name: qvr_key
+          max_duplicates: 40
+          config:
+            severity: error

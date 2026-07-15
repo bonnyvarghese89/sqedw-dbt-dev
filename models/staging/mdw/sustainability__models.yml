@@ -1,0 +1,85 @@
+version: 2
+
+models:
+
+  # =========================
+  # FINAL VARIANT
+  # =========================
+  - name: stg_sustainability__final_variant
+    description: "Product variant master data including customer segment and packaging information."
+    columns:
+
+      - name: variant_id
+        tests:
+          - not_null
+          - unique
+
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: status
+        tests:
+          - not_null
+
+
+  # =========================
+  # PRODUCT STRUCTURE (BOM)
+  # =========================
+  - name: stg_sustainability__product_structure
+    description: "Bill of materials / product component structure."
+    columns:
+
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: component_id
+        tests:
+          - not_null
+
+      - name: component_quantity
+        tests:
+          - not_null
+
+
+  # =========================
+  # VENDOR DETAILS
+  # =========================
+  - name: stg_sustainability__vendor_details
+    description: "Vendor master data with sustainability rating."
+    columns:
+
+      - name: vendor_id
+        tests:
+          - not_null
+          - unique
+
+      - name: vendor_name
+        tests:
+          - not_null
+
+      - name: sustainability_rating
+        tests:
+          - not_null
+
+
+  # =========================
+  # WAREHOUSE MASTER
+  # =========================
+  - name: stg_sustainability__warehouse_master
+    description: "Warehouse master data including location and type."
+    columns:
+
+      - name: warehouse_id
+        tests:
+          - not_null
+          - unique
+
+      - name: warehouse_code
+        tests:
+          - not_null
+
+      - name: country_name
+        tests:
+          - not_null

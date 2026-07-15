@@ -1,0 +1,54 @@
+version: 2
+
+models:
+
+  - name: stg_intelex__psp_actions_source
+    description: "PSP actions and corrective task tracking."
+    columns:
+      - name: record_no
+        tests: [not_null]
+
+  - name: stg_intelex__ehs
+    description: "EHS incident and safety event data."
+    columns:
+      - name: incident_no
+        tests: [not_null]
+
+      - name: record_no
+        tests: [not_null]
+
+  - name: stg_intelex__monthly_batch_loading
+    description: "Monthly batch incident aggregation."
+    columns:
+      - name: record_no
+        tests: [not_null]
+
+  - name: stg_intelex__ehshs_4_bpc
+    description: "EHS ↔ BPC mapping bridge."
+    columns:
+      - name: incident_id
+        tests: [not_null]
+
+  - name: stg_intelex__complaints
+    description: "Customer complaints data."
+    columns:
+      - name: record_no
+        tests: [not_null]
+
+  - name: stg_intelex__psp_capa_r
+    description: "CAPA corrective action tracking."
+    columns:
+      - name: record_no
+        tests: [not_null]
+
+  - name: stg_intelex__locations
+    description: "Location master data."
+    columns:
+      - name: id
+        tests: [not_null]
+
+  - name: stg_intelex__investigations
+    description: "Investigation / root cause analysis data."
+    columns:
+      - name: record_no
+        tests: [not_null]

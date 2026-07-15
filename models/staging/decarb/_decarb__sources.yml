@@ -1,0 +1,43 @@
+version: 2
+
+sources:
+
+  - name: raw_decarb
+    database: SRC_0084
+    schema: API
+    quoting:
+      identifier: true
+
+    description: "Decarbonization and site sustainability source system."
+
+    meta:
+      data_quality: Medium
+      source_system_name: Decarb
+      owner_business: Gunnar.Nordensson@skf.com
+      owner_it: Gunnar.Nordensson@skf.com
+
+    tables:
+
+      # =========================
+      # SITE DATA
+      # =========================
+      - name: site_data
+        identifier: SITE_DATA
+        quote: true
+        description: "Site level operational and environmental data used for ESG reporting."
+
+      # =========================
+      # MASTER DATA TARGETS
+      # =========================
+      - name: master_data_targets
+        identifier: MASTER_DATA_TARGETS
+        quote: true
+        description: "Decarbonization targets and roadmap maturity data."
+
+      # =========================
+      # SITE ROLLUP
+      # =========================
+      - name: site_rollup
+        identifier: SITE_ROLLUP
+        quote: true
+        description: "Site hierarchy and business aggregation data."

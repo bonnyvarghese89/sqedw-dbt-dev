@@ -1,0 +1,68 @@
+version: 2
+
+sources:
+
+  - name: bpc
+    database: ENT_FINANCE_PROD
+    schema: API_SQE_DM
+    description: >
+      Business Planning and Consolidation (BPC) source system containing
+      Sustainability, Environmental, Health & Safety, Energy, Employee,
+      and master reference data used by the SQE DW platform.
+
+    quoting:
+      identifier: true
+
+    config:
+      meta:
+        data_quality: Medium
+        source_system_name: BPC
+        owner_business: sustainability@coljam.com
+        owner_it: dataengineering@coljam.com
+
+    tables:
+
+      - name: safety
+        identifier: FCT_API_SQE_SAFETY
+        quote: true
+        description: >
+          Fact table containing safety incidents and accident metrics.
+
+      - name: energy
+        identifier: FCT_API_SQE_ENERGY
+        quote: true
+        description: >
+          Fact table containing energy consumption information for sites.
+
+      - name: environment
+        identifier: FCT_API_SQE_ENVIRONMENT
+        quote: true
+        description: >
+          Fact table containing environmental measurements such as
+          waste, emissions, water consumption, and other EHS indicators.
+
+      - name: account
+        identifier: DIM_API_SQE_ACCOUNT
+        quote: true
+        description: >
+          Dimension table containing EHS account hierarchy and reporting definitions.
+
+      - name: sqe_site
+        identifier: DIM_API_SQE_SITE
+        quote: true
+        description: >
+          Site master dimension containing manufacturing site attributes,
+          sustainability capabilities, and geographical information.
+
+      - name: sqe_entity
+        identifier: DIM_API_SQE_ENTITY
+        quote: true
+        description: >
+          Entity master dimension containing organizational hierarchy data.
+
+      - name: sqe_employee
+        identifier: FCT_API_SQE_EMPLOYEES
+        quote: true
+        description: >
+          Fact table containing employee counts, agency workforce,
+          and working hours used for safety normalization calculations.

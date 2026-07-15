@@ -1,0 +1,59 @@
+version: 2
+
+sources:
+
+  - name: sievo
+    database: PRD_ENT_SIEVO
+    schema: SIEVO_DM
+    description: "SIEVO analytical views for hierarchy, vendor, product, and transaction data."
+
+    quoting:
+      identifier: true
+
+    meta:
+      data_quality: Medium
+      source_system_name: SIEVO
+      owner_business: procurement.analytics@company.com
+      owner_it: data.platform@company.com
+
+    tables:
+
+      - name: hierarchy_mapping_v2
+        identifier: V_HIERARCHY_MAPPING_V2
+        quote: true
+        description: "Cross-domain hierarchy mapping linking product, legal, operational, supplier and vendor region."
+
+      - name: legalunit_hierarchy
+        identifier: V_LEGALUNIT_HIERARCHY
+        quote: true
+        description: "Legal unit hierarchy including company country and legal entity mapping."
+
+      - name: material_master
+        identifier: V_MATERIAL_MASTER
+        quote: true
+        description: "Material master data including attributes like cost, UOM, and dimensions."
+
+      - name: operationalunit_master
+        identifier: V_OPERATIONALUNIT_MASTER
+        quote: true
+        description: "Operational unit master data including currency and business line ownership."
+
+      - name: product_hierarchy
+        identifier: V_PRODUCT_HIERARCHY
+        quote: true
+        description: "Product category hierarchy from L1 to L5 with procurement classification."
+
+      - name: transactiondata
+        identifier: V_TRANSACTIONDATA
+        quote: true
+        description: "Transactional procurement and invoice level data."
+
+      - name: vendor_master_v2
+        identifier: V_VENDOR_MASTER_V2
+        quote: true
+        description: "Vendor master data including ERP mapping, address, region, and SAP linkage."
+
+      - name: vendor_region_hierarchy
+        identifier: V_VENDOR_REGION_HIERARCHY
+        quote: true
+        description: "Vendor region hierarchy mapping supplier country to region."

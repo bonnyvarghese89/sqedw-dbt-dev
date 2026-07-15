@@ -1,0 +1,75 @@
+version: 2
+
+sources:
+
+  - name: intelex
+    database: SRC_0076
+    schema: API
+    description: "Intelex EHS operational views including incidents, complaints, CAPA, actions, and location data."
+
+    quoting:
+      identifier: true
+
+    meta:
+      data_quality: Medium
+      source_system_name: INTELEX
+      owner_business: Armen.Laziev@skf.com
+      owner_it: Armen.Laziev@skf.com
+
+    tables:
+
+      # =========================
+      # PSP ACTIONS
+      # =========================
+      - name: psp_actions_source
+        identifier: VW_367_PSP_ACTIONS_INTERIM_SOURCE
+        quote: true
+
+      # =========================
+      # EHS INCIDENT DATA
+      # =========================
+      - name: ehs
+        identifier: VW_482_EHS_TEST
+        quote: true
+
+      # =========================
+      # MONTHLY BATCH DATA
+      # =========================
+      - name: monthly_batch_loading
+        identifier: VW_532_MONTHLY_BATCH_LOADING
+        quote: true
+
+      # =========================
+      # EHSHS BPC MAPPING
+      # =========================
+      - name: ehshs_4_bpc
+        identifier: VW_547_EHSHS_4_BPC_TO_SNOWFLAKE
+        quote: true
+
+      # =========================
+      # COMPLAINTS
+      # =========================
+      - name: complaints
+        identifier: VW_T_163_COMPLAINTS_INTERIM_SOURCE
+        quote: true
+
+      # =========================
+      # CAPA / ACTIONS
+      # =========================
+      - name: psp_capa_r
+        identifier: VW_V_147_PSP_CAPA_R
+        quote: true
+
+      # =========================
+      # LOCATIONS
+      # =========================
+      - name: locations
+        identifier: V_LOCATIONS
+        quote: true
+
+      # =========================
+      # INVESTIGATIONS
+      # =========================
+      - name: investigations
+        identifier: VW_T_163_COMPLAINTS_INTERIM_SOURCE
+        quote: true
